@@ -592,6 +592,10 @@ video {
   float: inline-end;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
 .m-3 {
   margin: 0.75rem;
 }
@@ -602,10 +606,6 @@ video {
 
 .m-auto {
   margin: auto;
-}
-
-.m-2 {
-  margin: 0.5rem;
 }
 
 .mb-2 {
@@ -634,10 +634,6 @@ video {
 
 .block {
   display: block;
-}
-
-.inline {
-  display: inline;
 }
 
 .flex {

@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Button from '@mui/material/Button';
+import { createData } from './RTable';
 
 import { TextField, Toolbar } from '@mui/material';
 
@@ -13,17 +15,18 @@ export default function SideForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      Job_Title: data.get('Job_Title'),
-      Experience_Range: data.get('Experience_Range'),
-      Salary_Range: data.get('Salary_Range'),
-      Job_Priority: data.get('Job_Priority'),
-      Posted_on: data.get('Posted_on'),
-      Status: data.get('Status'),
-      City: data.get('City'),
-      State: data.get('State'),
-    });
-    
+    const newjob = createData(
+        props.jobs.length+1,
+        data.get('Job_Title'),
+        data.get('Experience_Range'),
+        data.get('Salary_Range'),
+        data.get('Job_Priority'),
+        data.get('Posted_on'),
+        data.get('Status'), 
+        data.get('City'),
+        data.get('State')
+    )
+    props.setJobs([...props.jobs,newjob])
   };
 
   const toggleDrawer = (anchor, open) => (event) => {

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,16 +9,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 
-function createData(Job_Id, Job_Title, Experience_range, Salary_Range, Job_priority, Posted_on, Status, City, State, Action) {
+export function createData(Job_Id, Job_Title, Experience_range, Salary_Range, Job_priority, Posted_on, Status, City, State, Action) {
   return { Job_Id, Job_Title, Experience_range, Salary_Range, Job_priority, Posted_on, Status, City, State, Action };
 }
 
-const rows = [
-  createData(1, "Software Engineer", "0-2", "5LPA","High" ,"15-07-2024","Active","Hyderabad","Telangana"),
-  
-];
 
-export default function RTable() {
+export default function RTable(props) {
+  
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -36,7 +34,7 @@ export default function RTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {props.jobs && props.jobs.map((row) => (
             <TableRow
               key={row.Job_Id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
